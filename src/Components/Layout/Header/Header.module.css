@@ -34,14 +34,6 @@
     color: #fff;
 }
 
-.logoSymbol {
-    width: 6px;
-    height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent);
-}
-
 .navActions {
     display: flex;
     align-items: center;
