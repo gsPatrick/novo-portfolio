@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa6';
 import styles from './Footer.module.css';
 
@@ -48,13 +48,23 @@ const SocialIcons = () => (
 
 export default function Footer() {
     const videoRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
         if (videoRef.current) {
             videoRef.current.play().catch(error => {
                 console.log("Autoplay blocked:", error);
             });
         }
+
+        return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
     return (
