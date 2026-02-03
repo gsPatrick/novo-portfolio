@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa6';
 import styles from './Footer.module.css';
 
