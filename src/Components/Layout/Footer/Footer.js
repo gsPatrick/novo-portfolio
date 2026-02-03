@@ -46,10 +46,21 @@ const SocialIcons = () => (
 );
 
 export default function Footer() {
+    const videoRef = useRef(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.play().catch(error => {
+                console.log("Autoplay blocked:", error);
+            });
+        }
+    }, []);
+
     return (
         <footer className={styles.footer}>
             <div className={styles.bgVideo}>
                 <video
+                    ref={videoRef}
                     autoPlay
                     muted
                     loop
