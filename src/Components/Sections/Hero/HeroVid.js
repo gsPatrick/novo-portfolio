@@ -10,6 +10,8 @@ export default function HeroVid() {
                 muted
                 loop
                 playsInline
+                webkit-playsinline="true"
+                preload="auto"
                 className={styles.video}
             >
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-spheres-and-lines-41131-large.mp4" type="video/mp4" />

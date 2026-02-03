@@ -49,7 +49,14 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.bgVideo}>
-                <video autoPlay muted loop playsInline>
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    webkit-playsinline="true"
+                    preload="auto"
+                >
                     <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-animation-of-white-moving-particles-on-black-background-41133-large.mp4" type="video/mp4" />
                 </video>
             </div>

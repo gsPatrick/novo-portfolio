@@ -61,7 +61,7 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     const opacity = useTransform(
         scrollYProgress,
         [end - 0.1, end],
-        [1, isLast ? 1 : 0] // Complete fade out for non-last projects to prevent ghosting
+        [1, isLast ? 1 : 1] // Keep opacity at 1 to allow stacking/overlap
     );
 
     return (
