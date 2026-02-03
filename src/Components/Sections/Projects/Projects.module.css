@@ -1,0 +1,250 @@
+.projects {
+    position: relative;
+    height: 400vh;
+    background: #000;
+}
+
+.introSection {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.introGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    filter: blur(80px);
+}
+
+.textStack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1vh;
+    z-index: 10;
+    width: 100%;
+}
+
+.line,
+.lineSub {
+    overflow: hidden;
+    height: fit-content;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 15vw, 15rem);
+    font-weight: 900;
+    line-height: 0.8;
+    text-transform: uppercase;
+    letter-spacing: -0.06em;
+    white-space: nowrap;
+    /* Prevents wrapping mid-word */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.line {
+    color: #fff;
+}
+
+.lineSub {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+}
+
+.stickyContainer {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.cardWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    overflow: hidden;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #000 0%, transparent 20%, transparent 80%, #000 100%);
+}
+
+.info {
+    padding: 10% 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    background: #000;
+    /* Solid Black to prevent bleed-through */
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.number {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 1rem;
+    letter-spacing: 0.3rem;
+}
+
+.category {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.15rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 8rem);
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: -0.05em;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+.button {
+    width: fit-content;
+    padding: 1.2rem 3rem;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 100px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.08rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+@media (max-width: 1279px) {
+    .card {
+        grid-template-columns: 1fr;
+    }
+
+    .imageContainer {
+        height: 60vh;
+    }
+
+    .info {
+        padding: 6vh 6%;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .title {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+    }
+
+    .line,
+    .lineSub {
+        font-size: clamp(2.5rem, 12vw, 8rem);
+    }
+}
+
+@media (max-width: 767px) {
+    .projects {
+        height: 160vh;
+        /* Extremely compact */
+        margin-top: -5vh;
+        /* Pulls it up further */
+    }
+
+    .introSection {
+        height: 40vh;
+        /* Very tight text area */
+        padding: 5vh 6% 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .imageContainer {
+        height: 45vh;
+    }
+
+    .info {
+        padding: 5vh 6%;
+        gap: 1.5rem;
+    }
+
+    .title {
+        font-size: 2.2rem;
+        line-height: 1;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .line,
+    .lineSub {
+        font-size: clamp(1.8rem, 12vw, 3.5rem);
+        line-height: 0.75;
+    }
+
+    .button {
+        padding: 1rem 2.5rem;
+        font-size: 0.8rem;
+    }
+}
