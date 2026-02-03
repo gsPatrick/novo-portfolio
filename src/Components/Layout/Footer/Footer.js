@@ -70,17 +70,25 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.bgVideo}>
-                <video
-                    ref={videoRef}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    webkit-playsinline="true"
-                    preload="auto"
-                >
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-animation-of-white-moving-particles-on-black-background-41133-large.mp4" type="video/mp4" />
-                </video>
+                {isMobile ? (
+                    <img
+                        src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnhhZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqZndqJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l0HlS8H4k5y_vD_S0/giphy.gif"
+                        alt="Footer Animation"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.1 }}
+                    />
+                ) : (
+                    <video
+                        ref={videoRef}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        webkit-playsinline="true"
+                        preload="auto"
+                    >
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-animation-of-white-moving-particles-on-black-background-41133-large.mp4" type="video/mp4" />
+                    </video>
+                )}
             </div>
 
             <div className={styles.top}>
