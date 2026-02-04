@@ -12,39 +12,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Patrick Siqueira | Desenvolvedor Full Stack & Especialista Next.js | CodeByPatrick",
-  description: "Portfólio de Patrick Siqueira (Patrick.Developer). Especialista em criar experiências digitais de alto impacto com Next.js, React e IA. Conheça meus projetos como Auttoma, Tersio Idbas e G5 Futebol.",
-  keywords: ["Patrick Siqueira", "Patrick Dev", "Patrick.Developer", "CodeByPatrick", "Desenvolvedor Full Stack", "Next.js Specialist", "Freelance Developer Brasil"],
+  title: "Patrick Siqueira | Patrick.Developer | Desenvolvedor Full Stack & CNPJ",
+  description: "Especialista Full Stack Patrick Siqueira. Contrate como Pessoa Física ou Jurídica (Patrick.Developer CNPJ). Projetos de alta performance com Next.js, React e IA. CodeByPatrick.",
+  keywords: ["Patrick Siqueira", "Patrick Dev", "Patrick.Developer", "CodeByPatrick", "Patrick Siqueira CNPJ", "Desenvolvedor Full Stack", "Freelance Developer"],
   authors: [{ name: "Patrick Siqueira" }],
   openGraph: {
-    title: "Patrick Siqueira | High-Impact Full Stack Developer",
-    description: "Transformando ideias em interfaces cinematográficas e sistemas robustos.",
+    title: "Patrick Siqueira | Patrick.Developer Full Stack",
+    description: "Transformando ideias em interfaces cinematográficas e sistemas robustos com a formalidade de uma empresa.",
     url: "https://codebypatrick.com",
     siteName: "CodeByPatrick",
     locale: "pt_BR",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Patrick Siqueira | Patrick.Developer",
-    description: "Desenvolvedor Full Stack focado em performance e design premium.",
-  },
-  alternates: {
-    canonical: "https://codebypatrick.com",
-  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Patrick Siqueira",
-  "alternateName": ["Patrick Dev", "Patrick.Developer", "CodeByPatrick"],
-  "url": "https://codebypatrick.com",
-  "jobTitle": "Full Stack Developer",
-  "knowsAbout": ["Next.js", "React", "Node.js", "UI/UX Design", "Software Engineering"],
-  "sameAs": [
-    "https://github.com/gsPatrick",
-    "https://wa.me/5571982862912"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://codebypatrick.com/#person",
+      "name": "Patrick Siqueira",
+      "url": "https://codebypatrick.com",
+      "sameAs": [
+        "https://github.com/gsPatrick",
+        "https://wa.me/5571982862912"
+      ],
+      "jobTitle": "Full Stack Developer"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://codebypatrick.com/#organization",
+      "name": "Patrick.Developer",
+      "url": "https://codebypatrick.com",
+      "taxID": "CNPJ",
+      "logo": "https://codebypatrick.com/logo.png"
+    }
   ]
 };
 
