@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "title": "Nexus Alpha",
-        "category": "Plataforma Enterprise",
+        "title": "AUTTOMA",
+        "category": "Landing Page",
         "description": "Uma revolução na visualização de dados complexos, unindo arquitetura de microsserviços com uma interface cinematográfica.",
         "color": "#0a0a0a",
-        "type": "image",
+        "type": "video",
         "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000",
         "typeMobile": "image",
         "urlMobile": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800"
