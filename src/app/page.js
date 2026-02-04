@@ -1,4 +1,3 @@
-import Header from '@/Components/Layout/Header/Header';
 import Footer from '@/Components/Layout/Footer/Footer';
 import Hero from '@/Components/Sections/Hero/Hero';
 import Capabilities from '@/Components/Sections/Capabilities/Capabilities';
@@ -15,6 +14,6 @@ export default function Home() {
       <Business />
       <Contact />
       <Footer />
-    </main >
+    </>
   );
 }
