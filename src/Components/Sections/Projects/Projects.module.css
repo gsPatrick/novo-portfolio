@@ -79,6 +79,7 @@
     align-items: center;
     justify-content: center;
     background: #000;
+    will-change: transform;
 }
 
 .card {
