@@ -44,44 +44,51 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     const end = start + 0.25;
     const nextStart = isMobile ? (mobileStartOffsets[index + 1] || 1.1) : (start + 0.25);
 
-    // Entrance: Linear y transform for performance
+    // Entrance: Linear y transform for Desktop only
     const y = useTransform(
         scrollYProgress,
         [Math.max(0, start - entranceRange), start],
-        ["100%", "0%"]
+        [isMobile ? "0%" : "100%", "0%"]
     );
 
     const isLast = index === total - 1;
 
-    // Exit: Subtle scale only
-    const scale = useTransform(
+    // Exit: Subtle scale for Desktop only
+    const scaleTransform = useTransform(
         scrollYProgress,
         [nextStart - 0.1, nextStart],
         [1, isLast ? 1 : 0.92]
     );
+    const scale = isMobile ? 1 : scaleTransform;
 
-    // Use opacity instead of brightness filter for mobile performance
-    const cardOpacity = useTransform(
+    // Use opacity based depth for Desktop only
+    const cardOpacityTransform = useTransform(
         scrollYProgress,
         [nextStart - 0.1, nextStart],
         [1, isLast || !isMobile ? 1 : 0.5]
     );
+    const cardOpacity = isMobile ? 1 : cardOpacityTransform;
 
     // Desktop only filter
-    const brightness = useTransform(
+    const brightnessTransform = useTransform(
         scrollYProgress,
         [nextStart - 0.1, nextStart],
         ["brightness(1)", isLast ? "brightness(1)" : "brightness(0.3)"]
     );
+    const brightness = isMobile ? "none" : brightnessTransform;
 
     return (
         <motion.div
             className={styles.cardWrapper}
+            initial={isMobile ? { opacity: 0, y: 50 } : {}}
+            whileInView={isMobile ? { opacity: 1, y: 0 } : {}}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             style={{
-                y,
+                y: isMobile ? 0 : y,
                 scale,
                 opacity: cardOpacity,
-                filter: isMobile ? "none" : brightness,
+                filter: brightness,
                 zIndex: index
             }}
         >

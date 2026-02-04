@@ -207,16 +207,44 @@
 
 @media (max-width: 767px) {
     .projects {
-        height: 400vh;
+        height: auto;
         margin-top: 0;
+        /* Scroll Snap Container */
+        scroll-snap-type: y mandatory;
     }
 
     .introSection {
-        height: 60vh;
+        height: 100vh;
+        /* Make intro its own snap card */
+        scroll-snap-align: center;
         padding: 5vh 6% 0;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .stickyContainer {
+        position: relative;
+        height: auto;
+        top: auto;
+        display: block;
+    }
+
+    .cardWrapper {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        scroll-snap-align: center;
+        /* Prevent accidental overlaps on snap */
+        margin-bottom: 0px;
+        will-change: auto;
+    }
+
+    .card {
+        grid-template-columns: 1fr;
     }
 
     .imageContainer {
