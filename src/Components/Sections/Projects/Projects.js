@@ -35,49 +35,49 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     // Mobile detection
     const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
-    // Snappy cinematic ranges for 300vh scroll runway
-    const mobileStartOffsets = [0.05, 0.38, 0.71];
-    const mobileDuration = 0.18; // Even faster (0.18 * 300vh = ~54vh of scroll)
+    // Smooth out the raw scroll for mobile to prevent "teleporting"
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    // Cinematic ranges for 600vh scroll runway
+    // First project appears after intro text (~0.1 of scroll)
+    const mobileStartOffsets = [0.15, 0.45, 0.75];
+    const mobileEntranceWidth = 0.25; // How much of the scroll it takes to rise
 
     const start = isMobile ? mobileStartOffsets[index] : (0.25 + index * 0.25);
-    const end = start + (isMobile ? mobileDuration : 0.25);
+    const end = start + (isMobile ? 0.3 : 0.25);
+    const nextStart = isMobile ? (mobileStartOffsets[index + 1] || 1.2) : (start + 0.25);
 
-    const nextStart = isMobile ? (mobileStartOffsets[index + 1] || 1.1) : (start + 0.25);
-
-    // Entrance: Rise fast (0.12 of scroll)
+    // Entrance: Very wide range for slow, heavy rise
     const y = useTransform(
-        scrollYProgress,
-        [Math.max(0, start - (isMobile ? 0.12 : 0.1)), start],
+        smoothProgress,
+        [Math.max(0, start - (isMobile ? 0.25 : 0.1)), start],
         ["100%", "0%"]
     );
 
-    // Exit: Scale only, NO heavy filters on mobile
+    // Exit: Wide range for slow scaling and darkening
     const isLast = index === total - 1;
 
     const scale = useTransform(
-        scrollYProgress,
-        [nextStart - 0.1, nextStart],
-        [1, isLast ? 1 : 0.92]
+        smoothProgress,
+        [nextStart - 0.2, nextStart],
+        [1, isLast ? 1 : 0.85]
     );
 
-    // REMOVE brightness for performance on mobile, use simple opacity-based depth
-    const brightnessValue = isMobile ? "brightness(1)" : (isLast ? "brightness(1)" : "brightness(0.4)");
     const cardOpacity = useTransform(
-        scrollYProgress,
-        [nextStart - 0.1, nextStart],
-        [1, isLast || !isMobile ? 1 : 0.6] // Subtle fade on mobile instead of filter
+        smoothProgress,
+        [nextStart - 0.2, nextStart],
+        [1, isLast || !isMobile ? 1 : 0.4]
     );
 
+    // Simplified depth for performance on mobile
     const brightness = useTransform(
-        scrollYProgress,
-        [nextStart - 0.1, nextStart],
-        ["brightness(1)", brightnessValue]
-    );
-
-    const opacity = useTransform(
-        scrollYProgress,
-        [end - 0.1, end],
-        [1, 1]
+        smoothProgress,
+        [nextStart - 0.2, nextStart],
+        ["brightness(1)", isLast ? "brightness(1)" : "brightness(0.3)"]
     );
 
     return (
