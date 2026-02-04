@@ -3,6 +3,12 @@
         "id": 1,
         "title": "AUTTOMA",
         "category": "Landing Page",
+        "tags": [
+            "React",
+            "Next.js",
+            "Framer Motion",
+            "CSS Modules"
+        ],
         "description": "Engenharia e automação inteligente para transformar e proteger seu patrimônio com máxima técnica e eficiência.",
         "color": "#0a0a0a",
         "type": "video",
@@ -15,6 +21,12 @@
         "id": 2,
         "title": "Tersio Idbas",
         "category": "Advocacia Estratégica",
+        "tags": [
+            "React",
+            "Vite",
+            "Tailwind CSS",
+            "Node.js"
+        ],
         "description": "Soluções jurídicas humanizadas e segurança estratégica para pessoas e empresas, com transparência total.",
         "color": "#050505",
         "type": "video",
@@ -28,6 +40,12 @@
         "id": 3,
         "title": "Kajoi",
         "category": "Tech & Hardware",
+        "tags": [
+            "HTML5",
+            "JavaScript",
+            "Animation",
+            "UI/UX"
+        ],
         "description": "Reparos especializados de alta performance com agilidade, peças premium e garantia total para o seu dispositivo.",
         "color": "#080808",
         "type": "video",
@@ -41,6 +59,12 @@
         "id": 4,
         "title": "Blendskin",
         "category": "E-commerce & Beauty",
+        "tags": [
+            "React",
+            "E-commerce",
+            "Stripe",
+            "Next.js"
+        ],
         "description": "A união entre a ciência avançada e a tradição coreana para reparar, proteger e iluminar a beleza real da sua pele.",
         "color": "#0a0a0a",
         "type": "video",
@@ -54,6 +78,12 @@
         "id": 5,
         "title": "Super Odds",
         "category": "Sports & Analytics",
+        "tags": [
+            "Real-time Data",
+            "React",
+            "Firebase",
+            "API Integration"
+        ],
         "description": "A maior comunidade de Super Odds do Brasil. Informação estratégica e entretenimento para quem joga com responsabilidade.",
         "color": "#0b0b0b",
         "type": "video",
@@ -67,6 +97,12 @@
         "id": 6,
         "title": "G5 Futebol",
         "category": "Sports Management",
+        "tags": [
+            "Next.js",
+            "PostgreSQL",
+            "Dashboard",
+            "Auth"
+        ],
         "description": "Metodologia de elite e gestão profissional para formação de atletas, criada por quem vive a essência do futebol.",
         "color": "#050505",
         "type": "video",

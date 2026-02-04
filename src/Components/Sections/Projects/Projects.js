@@ -128,16 +128,12 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
                         </div>
                     </div>
 
-                    <h2 className={styles.title}>{project.title}</h2>
-                    <p className={styles.description}>{project.description}</p>
-
-                    <motion.button
-                        className={styles.button}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        Ver Detalhes
-                    </motion.button>
+                    <div className={styles.tags}>
+                        <span className={styles.categoryTag}>{project.category}</span>
+                        {project.tags && project.tags.map((tag, i) => (
+                            <span key={i} className={styles.tag}>{tag}</span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </motion.div>
