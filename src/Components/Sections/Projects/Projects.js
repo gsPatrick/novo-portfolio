@@ -81,14 +81,20 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
                             preload="auto"
                             className={styles.image}
                             src={currentUrl}
-                            style={{ objectPosition: project.objectPosition || 'center center' }}
+                            style={{
+                                objectFit: project.objectFit || 'cover',
+                                objectPosition: project.objectPosition || 'center center'
+                            }}
                         />
                     ) : (
                         <img
                             src={currentUrl}
                             alt={project.title}
                             className={styles.image}
-                            style={{ objectPosition: project.objectPosition || 'center center' }}
+                            style={{
+                                objectFit: project.objectFit || 'cover',
+                                objectPosition: project.objectPosition || 'center center'
+                            }}
                         />
                     )}
                     <div className={styles.overlay} />
