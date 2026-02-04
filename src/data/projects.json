@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "Nexus Alpha",
+        "category": "Plataforma Enterprise",
+        "description": "Uma revolução na visualização de dados complexos, unindo arquitetura de microsserviços com uma interface cinematográfica.",
+        "color": "#0a0a0a",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000"
+    },
+    {
+        "id": 2,
+        "title": "Aura Motion",
+        "category": "Design Sustentável",
+        "description": "Experiência imersiva que redefine como interagimos com o consumo de energia renovável através de motion design.",
+        "color": "#050505",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=2000"
+    },
+    {
+        "id": 3,
+        "title": "Quantum Core",
+        "category": "Engenharia de Software",
+        "description": "Otimização de performance em escala global, processando milhões de requisições com latência próxima de zero.",
+        "color": "#080808",
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80"
+    }
+]

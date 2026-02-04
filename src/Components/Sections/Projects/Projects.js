@@ -2,34 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import styles from './Projects.module.css';
-
-const PROJECTS = [
-    {
-        id: 1,
-        title: 'Nexus Alpha',
-        category: 'Plataforma Enterprise',
-        description: 'Uma revolução na visualização de dados complexos, unindo arquitetura de microsserviços com uma interface cinematográfica.',
-        color: '#0a0a0a',
-        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000'
-    },
-    {
-        id: 2,
-        title: 'Aura Motion',
-        category: 'Design Sustentável',
-        description: 'Experiência imersiva que redefine como interagimos com o consumo de energia renovável através de motion design.',
-        color: '#050505',
-        image: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=2000'
-    },
-    {
-        id: 3,
-        title: 'Quantum Core',
-        category: 'Engenharia de Software',
-        description: 'Otimização de performance em escala global, processando milhões de requisições com latência próxima de zero.',
-        color: '#080808',
-        image: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80'
-    }
-];
+import PROJECTS from '@/data/projects.json';
 
 const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     // Mobile detection
@@ -77,6 +50,8 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     );
     const brightness = isMobile ? "none" : brightnessTransform;
 
+    const videoRef = useRef(null);
+
     return (
         <motion.div
             className={styles.cardWrapper}
@@ -94,11 +69,24 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
         >
             <div className={styles.card} style={{ backgroundColor: project.color }}>
                 <div className={styles.imageContainer}>
-                    <img
-                        src={`${project.image}${isMobile ? '&w=800' : '&w=2000'}`}
-                        alt={project.title}
-                        className={styles.image}
-                    />
+                    {project.type === 'video' ? (
+                        <video
+                            ref={videoRef}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            webkit-playsinline="true"
+                            className={styles.image}
+                            src={project.url}
+                        />
+                    ) : (
+                        <img
+                            src={isMobile ? `${project.url}&w=800` : `${project.url}${project.url.includes('?') ? '&' : '?'}w=2000`}
+                            alt={project.title}
+                            className={styles.image}
+                        />
+                    )}
                     <div className={styles.overlay} />
                 </div>
 
