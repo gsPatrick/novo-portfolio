@@ -36,35 +36,42 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
     // Snappy cinematic ranges for 300vh scroll runway
-    const mobileStartOffsets = [0.08, 0.40, 0.72];
-    const mobileDuration = 0.20;
+    const mobileStartOffsets = [0.05, 0.38, 0.71];
+    const mobileDuration = 0.18; // Even faster (0.18 * 300vh = ~54vh of scroll)
 
     const start = isMobile ? mobileStartOffsets[index] : (0.25 + index * 0.25);
     const end = start + (isMobile ? mobileDuration : 0.25);
 
     const nextStart = isMobile ? (mobileStartOffsets[index + 1] || 1.1) : (start + 0.25);
 
-    // Entrance: Snappier rise (0.12 of scroll = ~36vh)
+    // Entrance: Rise fast (0.12 of scroll)
     const y = useTransform(
         scrollYProgress,
         [Math.max(0, start - (isMobile ? 0.12 : 0.1)), start],
         ["100%", "0%"]
     );
 
-    // Exit: Subtle scale down as the NEXT one starts to rise
+    // Exit: Scale only, NO heavy filters on mobile
     const isLast = index === total - 1;
 
     const scale = useTransform(
         scrollYProgress,
         [nextStart - 0.1, nextStart],
-        [1, isLast ? 1 : 0.9]
+        [1, isLast ? 1 : 0.92]
     );
 
-    // Slightly lighter depth effect for performance
+    // REMOVE brightness for performance on mobile, use simple opacity-based depth
+    const brightnessValue = isMobile ? "brightness(1)" : (isLast ? "brightness(1)" : "brightness(0.4)");
+    const cardOpacity = useTransform(
+        scrollYProgress,
+        [nextStart - 0.1, nextStart],
+        [1, isLast || !isMobile ? 1 : 0.6] // Subtle fade on mobile instead of filter
+    );
+
     const brightness = useTransform(
         scrollYProgress,
         [nextStart - 0.1, nextStart],
-        ["brightness(1)", isLast ? "brightness(1)" : "brightness(0.4)"]
+        ["brightness(1)", brightnessValue]
     );
 
     const opacity = useTransform(
@@ -79,8 +86,8 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
             style={{
                 y,
                 scale,
-                opacity,
-                filter: brightness,
+                opacity: cardOpacity,
+                filter: isMobile ? "none" : brightness,
                 zIndex: index
             }}
         >
