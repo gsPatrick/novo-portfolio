@@ -26,13 +26,15 @@
     },
     {
         "id": 3,
-        "title": "Quantum Core",
-        "category": "Engenharia de Software",
-        "description": "Otimização de performance em escala global, processando milhões de requisições com latência próxima de zero.",
+        "title": "Kajoi",
+        "category": "Tech & Hardware",
+        "description": "Reparos especializados de alta performance com agilidade, peças premium e garantia total para o seu dispositivo.",
         "color": "#080808",
-        "type": "image",
-        "url": "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80",
-        "typeMobile": "image",
-        "urlMobile": "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800"
+        "type": "video",
+        "url": "/projetos/kajoi/kajoi.mp4",
+        "typeMobile": "video",
+        "urlMobile": "/projetos/kajoi/kajoi-mobile.mp4",
+        "objectFit": "cover",
+        "objectPosition": "center center"
     }
 ]
