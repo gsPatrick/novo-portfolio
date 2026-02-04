@@ -36,5 +36,18 @@
         "urlMobile": "/projetos/kajoi/kajoi-mobile.mp4",
         "objectFit": "cover",
         "objectPosition": "center center"
+    },
+    {
+        "id": 4,
+        "title": "Blendskin",
+        "category": "E-commerce & Beauty",
+        "description": "A união entre a ciência avançada e a tradição coreana para reparar, proteger e iluminar a beleza real da sua pele.",
+        "color": "#0a0a0a",
+        "type": "video",
+        "url": "/projetos/blendskin/blendskin.mp4",
+        "typeMobile": "video",
+        "urlMobile": "/projetos/blendskin/blendskin-mobile.mp4",
+        "objectFit": "cover",
+        "objectPosition": "center center"
     }
 ]
