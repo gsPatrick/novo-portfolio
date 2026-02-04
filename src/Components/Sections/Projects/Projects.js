@@ -1,17 +1,19 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import styles from './Projects.module.css';
 import PROJECTS from '@/data/projects.json';
 
 const ProjectCard = ({ project, index, scrollYProgress, total }) => {
-    // Mobile detection
+    const [viewMode, setViewMode] = useState('desktop');
+    // Mobile detection for initial state/layout
     const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
-    // Determine current media based on device
-    const currentUrl = isMobile && project.urlMobile ? project.urlMobile : project.url;
-    const currentType = isMobile && project.typeMobile ? project.typeMobile : project.type;
+    // Determine current media based on viewMode and device
+    // If user hasn't toggled, use smart defaults. If they toggled, respect their choice.
+    const currentUrl = viewMode === 'mobile' && project.urlMobile ? project.urlMobile : project.url;
+    const currentType = viewMode === 'mobile' && project.typeMobile ? project.typeMobile : project.type;
 
     // Optimized offsets for 400vh runway
     const mobileStartOffsets = [0.12, 0.42, 0.72];
@@ -50,7 +52,7 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     const brightnessTransform = useTransform(
         scrollYProgress,
         [nextStart - 0.1, nextStart],
-        ["brightness(1)", isLast ? "brightness(1)" : "brightness(0.3)"]
+        ["brightness(1)", isLast ? "brightness(1) " : "brightness(0.3)"]
     );
     const brightness = isMobile ? "none" : brightnessTransform;
 
@@ -71,39 +73,60 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
         >
             <div className={styles.card} style={{ backgroundColor: project.color }}>
                 <div className={styles.imageContainer}>
-                    {currentType === 'video' ? (
-                        <video
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            webkit-playsinline="true"
-                            preload="auto"
-                            className={styles.image}
-                            src={currentUrl}
-                            style={{
-                                objectFit: project.objectFit || 'cover',
-                                objectPosition: project.objectPosition || 'center center'
-                            }}
-                        />
-                    ) : (
-                        <img
-                            src={currentUrl}
-                            alt={project.title}
-                            className={styles.image}
-                            style={{
-                                objectFit: project.objectFit || 'cover',
-                                objectPosition: project.objectPosition || 'center center'
-                            }}
-                        />
-                    )}
+                    <motion.div
+                        key={viewMode}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className={styles.mediaFrame}
+                    >
+                        {currentType === 'video' ? (
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                webkit-playsinline="true"
+                                preload="auto"
+                                className={styles.image}
+                                src={currentUrl}
+                                style={{
+                                    objectFit: project.objectFit || 'cover',
+                                    objectPosition: project.objectPosition || 'center center'
+                                }}
+                            />
+                        ) : (
+                            <img
+                                src={currentUrl}
+                                alt={project.title}
+                                className={styles.image}
+                                style={{
+                                    objectFit: project.objectFit || 'cover',
+                                    objectPosition: project.objectPosition || 'center center'
+                                }}
+                            />
+                        )}
+                    </motion.div>
                     <div className={styles.overlay} />
                 </div>
 
                 <div className={styles.info}>
                     <div className={styles.header}>
                         <span className={styles.number}>0{project.id}</span>
-                        <span className={styles.category}>{project.category}</span>
+                        <div className={styles.viewToggle}>
+                            <button
+                                className={`${styles.toggleBtn} ${viewMode === 'desktop' ? styles.active : ''}`}
+                                onClick={() => setViewMode('desktop')}
+                            >
+                                Desktop
+                            </button>
+                            <button
+                                className={`${styles.toggleBtn} ${viewMode === 'mobile' ? styles.active : ''}`}
+                                onClick={() => setViewMode('mobile')}
+                            >
+                                Mobile
+                            </button>
+                        </div>
                     </div>
 
                     <h2 className={styles.title}>{project.title}</h2>
