@@ -13,14 +13,16 @@
     },
     {
         "id": 2,
-        "title": "Aura Motion",
-        "category": "Design Sustentável",
-        "description": "Experiência imersiva que redefine como interagimos com o consumo de energia renovável através de motion design.",
+        "title": "Tersio Idbas",
+        "category": "Advocacia Estratégica",
+        "description": "Soluções jurídicas humanizadas e segurança estratégica para pessoas e empresas, com transparência total.",
         "color": "#050505",
-        "type": "image",
-        "url": "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=2000",
-        "typeMobile": "image",
-        "urlMobile": "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=800"
+        "type": "video",
+        "url": "/projetos/tersio/tersio.mp4",
+        "typeMobile": "video",
+        "urlMobile": "/projetos/tersio/tersio-mobile.mp4",
+        "objectFit": "cover",
+        "objectPosition": "center center"
     },
     {
         "id": 3,
