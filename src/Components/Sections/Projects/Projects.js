@@ -35,21 +35,19 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     // Mobile detection
     const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
-    // Precise cinematic ranges for 350vh scroll runway
-    // Total section is 1.0. Intro is ~0.11.
-    const mobileStartOffsets = [0.08, 0.40, 0.72];
-    const mobileDuration = 0.28;
+    // Ultra-smooth cinematic ranges for 450vh scroll runway
+    const mobileStartOffsets = [0.12, 0.45, 0.78];
+    const mobileDuration = 0.32;
 
     const start = isMobile ? mobileStartOffsets[index] : (0.25 + index * 0.25);
     const end = start + (isMobile ? mobileDuration : 0.25);
 
-    // The next card starts rising later
     const nextStart = isMobile ? (mobileStartOffsets[index + 1] || 1.1) : (start + 0.25);
 
-    // Entrance: Rise from 100% to 0%
+    // Entrance: Very slow rise (0.15 of scroll = ~67vh)
     const y = useTransform(
         scrollYProgress,
-        [Math.max(0, start - (isMobile ? 0.08 : 0.1)), start],
+        [Math.max(0, start - (isMobile ? 0.15 : 0.1)), start],
         ["100%", "0%"]
     );
 
@@ -58,14 +56,14 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
 
     const scale = useTransform(
         scrollYProgress,
-        [nextStart - 0.1, nextStart],
-        [1, isLast ? 1 : 0.9]
+        [nextStart - 0.15, nextStart],
+        [1, isLast ? 1 : 0.85]
     );
 
     const brightness = useTransform(
         scrollYProgress,
-        [nextStart - 0.1, nextStart],
-        ["brightness(1)", isLast ? "brightness(1)" : "brightness(0.3)"]
+        [nextStart - 0.15, nextStart],
+        ["brightness(1)", isLast ? "brightness(1)" : "brightness(0.2)"]
     );
 
     const opacity = useTransform(
