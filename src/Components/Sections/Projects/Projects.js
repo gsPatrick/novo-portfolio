@@ -32,34 +32,43 @@ const PROJECTS = [
 ];
 
 const ProjectCard = ({ project, index, scrollYProgress, total }) => {
-    // Mobile transition logic
-    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+    // Precise cinematic ranges for 350vh scroll runway
+    // Total section is 1.0. Intro is ~0.11.
+    const mobileStartOffsets = [0.08, 0.40, 0.72];
+    const mobileDuration = 0.28;
 
-    // Distribute projects along the 350vh scroll (approx 0.1 to 1.0)
-    // We want a slow, cinematic rise.
-    const projectSize = isMobile ? 0.3 : 0.25;
-    const start = isMobile ? (index * 0.3) : (0.25 + index * 0.25);
-    const end = start + projectSize;
+    const start = isMobile ? mobileStartOffsets[index] : (0.25 + index * 0.25);
+    const end = start + (isMobile ? mobileDuration : 0.25);
 
+    // The next card starts rising later
+    const nextStart = isMobile ? (mobileStartOffsets[index + 1] || 1.1) : (start + 0.25);
+
+    // Entrance: Rise from 100% to 0%
     const y = useTransform(
         scrollYProgress,
-        [Math.max(0, start - (isMobile ? 0.2 : 0.1)), start],
+        [Math.max(0, start - (isMobile ? 0.08 : 0.1)), start],
         ["100%", "0%"]
     );
 
-    // Exit: Scale down slightly as next one comes in (EXCEPT for the last project)
+    // Exit: Scale down and darken as the NEXT one starts to rise
     const isLast = index === total - 1;
 
     const scale = useTransform(
         scrollYProgress,
-        [end - 0.1, end],
+        [nextStart - 0.1, nextStart],
         [1, isLast ? 1 : 0.9]
+    );
+
+    const brightness = useTransform(
+        scrollYProgress,
+        [nextStart - 0.1, nextStart],
+        ["brightness(1)", isLast ? "brightness(1)" : "brightness(0.3)"]
     );
 
     const opacity = useTransform(
         scrollYProgress,
         [end - 0.1, end],
-        [1, isLast ? 1 : 1] // Keep opacity at 1 to allow stacking/overlap
+        [1, 1]
     );
 
     return (
