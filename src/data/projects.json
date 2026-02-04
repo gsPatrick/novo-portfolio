@@ -49,5 +49,18 @@
         "urlMobile": "/projetos/blendskin/blendskin-mobile.mp4",
         "objectFit": "cover",
         "objectPosition": "center center"
+    },
+    {
+        "id": 5,
+        "title": "Super Odds",
+        "category": "Sports & Analytics",
+        "description": "A maior comunidade de Super Odds do Brasil. Informação estratégica e entretenimento para quem joga com responsabilidade.",
+        "color": "#0b0b0b",
+        "type": "video",
+        "url": "/projetos/superodds/superoddsa.mp4",
+        "typeMobile": "video",
+        "urlMobile": "/projetos/superodds/superodds-mobile.mp4",
+        "objectFit": "cover",
+        "objectPosition": "center center"
     }
 ]
