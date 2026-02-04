@@ -32,6 +32,9 @@ const PROJECTS = [
 ];
 
 const ProjectCard = ({ project, index, scrollYProgress, total }) => {
+    // Mobile detection
+    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+
     // Precise cinematic ranges for 350vh scroll runway
     // Total section is 1.0. Intro is ~0.11.
     const mobileStartOffsets = [0.08, 0.40, 0.72];
