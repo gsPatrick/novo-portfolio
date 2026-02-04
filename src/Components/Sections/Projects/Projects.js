@@ -69,6 +69,7 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
                 y,
                 scale,
                 opacity,
+                filter: brightness,
                 zIndex: index
             }}
         >
