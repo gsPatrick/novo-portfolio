@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import styles from './Projects.module.css';
 import PROJECTS from '@/data/projects.json';
 
 const ProjectCard = ({ project, index, scrollYProgress, total }) => {
