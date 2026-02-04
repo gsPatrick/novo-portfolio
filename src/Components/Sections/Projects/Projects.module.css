@@ -214,10 +214,11 @@
     }
 
     .introSection {
-        height: 100vh;
-        /* Make intro its own snap card */
-        scroll-snap-align: center;
-        padding: 5vh 6% 0;
+        height: 60vh;
+        /* Tighter area for the intro text */
+        scroll-snap-align: start;
+        /* Snap to the top of the text */
+        padding: 10vh 6% 5vh;
         display: flex;
         align-items: center;
         justify-content: center;
