@@ -8,8 +8,11 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     // Mobile detection
     const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
+    // Determine current media based on device
+    const currentUrl = isMobile && project.urlMobile ? project.urlMobile : project.url;
+    const currentType = isMobile && project.typeMobile ? project.typeMobile : project.type;
+
     // Optimized offsets for 400vh runway
-    // First project meets the intro text perfectly
     const mobileStartOffsets = [0.12, 0.42, 0.72];
     const entranceRange = isMobile ? 0.15 : 0.1;
 
@@ -50,8 +53,6 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     );
     const brightness = isMobile ? "none" : brightnessTransform;
 
-    const videoRef = useRef(null);
-
     return (
         <motion.div
             className={styles.cardWrapper}
@@ -69,20 +70,20 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
         >
             <div className={styles.card} style={{ backgroundColor: project.color }}>
                 <div className={styles.imageContainer}>
-                    {project.type === 'video' ? (
+                    {currentType === 'video' ? (
                         <video
-                            ref={videoRef}
                             autoPlay
                             muted
                             loop
                             playsInline
                             webkit-playsinline="true"
+                            preload="auto"
                             className={styles.image}
-                            src={project.url}
+                            src={currentUrl}
                         />
                     ) : (
                         <img
-                            src={isMobile ? `${project.url}&w=800` : `${project.url}${project.url.includes('?') ? '&' : '?'}w=2000`}
+                            src={currentUrl}
                             alt={project.title}
                             className={styles.image}
                         />
