@@ -27,7 +27,7 @@ const PROJECTS = [
         category: 'Engenharia de Software',
         description: 'Otimização de performance em escala global, processando milhões de requisições com latência próxima de zero.',
         color: '#080808',
-        image: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=2000'
+        image: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80'
     }
 ];
 
@@ -35,48 +35,42 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     // Mobile detection
     const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
-    // Smooth out the raw scroll for mobile to prevent "teleporting"
-    const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
-
-    // Cinematic ranges for 600vh scroll runway
-    // First project appears after intro text (~0.1 of scroll)
-    const mobileStartOffsets = [0.15, 0.45, 0.75];
-    const mobileEntranceWidth = 0.25; // How much of the scroll it takes to rise
+    // Optimized offsets for 400vh runway
+    // First project meets the intro text perfectly
+    const mobileStartOffsets = [0.12, 0.42, 0.72];
+    const entranceRange = isMobile ? 0.15 : 0.1;
 
     const start = isMobile ? mobileStartOffsets[index] : (0.25 + index * 0.25);
-    const end = start + (isMobile ? 0.3 : 0.25);
-    const nextStart = isMobile ? (mobileStartOffsets[index + 1] || 1.2) : (start + 0.25);
+    const end = start + 0.25;
+    const nextStart = isMobile ? (mobileStartOffsets[index + 1] || 1.1) : (start + 0.25);
 
-    // Entrance: Very wide range for slow, heavy rise
+    // Entrance: Linear y transform for performance
     const y = useTransform(
-        smoothProgress,
-        [Math.max(0, start - (isMobile ? 0.25 : 0.1)), start],
+        scrollYProgress,
+        [Math.max(0, start - entranceRange), start],
         ["100%", "0%"]
     );
 
-    // Exit: Wide range for slow scaling and darkening
     const isLast = index === total - 1;
 
+    // Exit: Subtle scale only
     const scale = useTransform(
-        smoothProgress,
-        [nextStart - 0.2, nextStart],
-        [1, isLast ? 1 : 0.85]
+        scrollYProgress,
+        [nextStart - 0.1, nextStart],
+        [1, isLast ? 1 : 0.92]
     );
 
+    // Use opacity instead of brightness filter for mobile performance
     const cardOpacity = useTransform(
-        smoothProgress,
-        [nextStart - 0.2, nextStart],
-        [1, isLast || !isMobile ? 1 : 0.4]
+        scrollYProgress,
+        [nextStart - 0.1, nextStart],
+        [1, isLast || !isMobile ? 1 : 0.5]
     );
 
-    // Simplified depth for performance on mobile
+    // Desktop only filter
     const brightness = useTransform(
-        smoothProgress,
-        [nextStart - 0.2, nextStart],
+        scrollYProgress,
+        [nextStart - 0.1, nextStart],
         ["brightness(1)", isLast ? "brightness(1)" : "brightness(0.3)"]
     );
 
@@ -93,7 +87,11 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
         >
             <div className={styles.card} style={{ backgroundColor: project.color }}>
                 <div className={styles.imageContainer}>
-                    <img src={project.image} alt={project.title} className={styles.image} />
+                    <img
+                        src={`${project.image}${isMobile ? '&w=800' : '&w=2000'}`}
+                        alt={project.title}
+                        className={styles.image}
+                    />
                     <div className={styles.overlay} />
                 </div>
 
