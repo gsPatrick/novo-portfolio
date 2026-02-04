@@ -32,21 +32,19 @@ const PROJECTS = [
 ];
 
 const ProjectCard = ({ project, index, scrollYProgress, total }) => {
-    // For mobile, we want to completely zero the gap between text and cards.
+    // Mobile transition logic
     const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
-    // First project on mobile starts already visible at the bottom of the intro text
-    const offset = isMobile ? (index === 0 ? 0 : 0.1) : 0.25;
+    // Distribute projects along the 350vh scroll (approx 0.1 to 1.0)
+    // We want a slow, cinematic rise.
     const projectSize = isMobile ? 0.3 : 0.25;
-    const start = offset + (index * projectSize);
-    const end = offset + ((index + 1) * projectSize);
-
-    const entranceStart = isMobile && index === 0 ? 0 : start - (isMobile ? 0.1 : 0.1);
+    const start = isMobile ? (index * 0.3) : (0.25 + index * 0.25);
+    const end = start + projectSize;
 
     const y = useTransform(
         scrollYProgress,
-        [Math.max(0, entranceStart), start],
-        [isMobile && index === 0 ? "35%" : "100%", "0%"]
+        [Math.max(0, start - (isMobile ? 0.2 : 0.1)), start],
+        ["100%", "0%"]
     );
 
     // Exit: Scale down slightly as next one comes in (EXCEPT for the last project)
