@@ -7,6 +7,7 @@
         "color": "#0a0a0a",
         "type": "video",
         "url": "/projetos/auttoma/auttoma.mp4",
+        "objectPosition": "left top",
         "typeMobile": "image",
         "urlMobile": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800"
     },
