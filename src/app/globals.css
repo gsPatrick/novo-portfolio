@@ -51,11 +51,17 @@ body {
   transition: filter 0.8s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: filter, transform;
+  width: 100%;
+}
+
+body.is-blurring {
+  overflow: hidden;
+  /* Prevent manual scroll during transition */
 }
 
 body.is-blurring #content-root {
-  filter: blur(20px) brightness(1.5);
-  transform: scale(0.95);
+  filter: blur(25px) brightness(1.2);
+  transform: scale(0.98);
   pointer-events: none;
 }
 

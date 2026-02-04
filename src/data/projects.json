@@ -4,8 +4,9 @@
         "title": "AUTTOMA",
         "category": "Landing Page",
         "tags": [
-            "React",
             "Next.js",
+            "React",
+            "SEO",
             "Framer Motion",
             "CSS Modules"
         ],
@@ -22,7 +23,9 @@
         "title": "Tersio Idbas",
         "category": "Advocacia Estratégica",
         "tags": [
+            "Next.js",
             "React",
+            "SEO",
             "Vite",
             "Tailwind CSS",
             "Node.js"
@@ -39,11 +42,13 @@
     {
         "id": 3,
         "title": "Kajoi",
-        "category": "Tech & Hardware",
+        "category": "Tecnologia & Hardware",
         "tags": [
+            "Next.js",
+            "SEO",
             "HTML5",
             "JavaScript",
-            "Animation",
+            "Animações",
             "UI/UX"
         ],
         "description": "Reparos especializados de alta performance com agilidade, peças premium e garantia total para o seu dispositivo.",
@@ -58,12 +63,13 @@
     {
         "id": 4,
         "title": "Blendskin",
-        "category": "E-commerce & Beauty",
+        "category": "E-commerce & Beleza",
         "tags": [
+            "Next.js",
+            "SEO",
             "React",
             "E-commerce",
-            "Stripe",
-            "Next.js"
+            "Stripe"
         ],
         "description": "A união entre a ciência avançada e a tradição coreana para reparar, proteger e iluminar a beleza real da sua pele.",
         "color": "#0a0a0a",
@@ -77,12 +83,13 @@
     {
         "id": 5,
         "title": "Super Odds",
-        "category": "Sports & Analytics",
+        "category": "Esportes & Análise",
         "tags": [
-            "Real-time Data",
+            "Next.js",
+            "SEO",
+            "Dados em Tempo Real",
             "React",
-            "Firebase",
-            "API Integration"
+            "Firebase"
         ],
         "description": "A maior comunidade de Super Odds do Brasil. Informação estratégica e entretenimento para quem joga com responsabilidade.",
         "color": "#0b0b0b",
@@ -96,12 +103,13 @@
     {
         "id": 6,
         "title": "G5 Futebol",
-        "category": "Sports Management",
+        "category": "Gestão Esportiva",
         "tags": [
             "Next.js",
+            "SEO",
             "PostgreSQL",
             "Dashboard",
-            "Auth"
+            "Autenticação"
         ],
         "description": "Metodologia de elite e gestão profissional para formação de atletas, criada por quem vive a essência do futebol.",
         "color": "#050505",

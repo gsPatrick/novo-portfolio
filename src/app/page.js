@@ -8,14 +8,13 @@ import Contact from '@/Components/Sections/Contact/Contact';
 
 export default function Home() {
   return (
-    <main>
-      <Header />
+    <>
       <Hero />
       <Capabilities />
       <Projects />
       <Business />
       <Contact />
       <Footer />
-    </main>
+    </main >
   );
 }
