@@ -47,6 +47,21 @@ const jsonLd = {
       "url": "https://codebypatrick.com",
       "taxID": "CNPJ",
       "logo": "https://codebypatrick.com/logo.png"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://codebypatrick.com/#service",
+      "name": "Patrick.Developer | Consultoria de Software & CNPJ",
+      "url": "https://codebypatrick.com",
+      "telephone": "+5571982862912",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brasil",
+        "addressRegion": "BA"
+      },
+      "image": "https://codebypatrick.com/logo.png",
+      "description": "Desenvolvimento de software de alta performance, Landing Pages cinematográficas e soluções Full Stack para empresas e pessoas físicas com emissão de Nota Fiscal."
     }
   ]
 };
