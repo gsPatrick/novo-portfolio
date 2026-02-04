@@ -3,10 +3,10 @@
         "id": 1,
         "title": "AUTTOMA",
         "category": "Landing Page",
-        "description": "Uma revolução na visualização de dados complexos, unindo arquitetura de microsserviços com uma interface cinematográfica.",
+        "description": "Engenharia e automação inteligente para transformar e proteger seu patrimônio com máxima técnica e eficiência.",
         "color": "#0a0a0a",
         "type": "video",
-        "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000",
+        "url": "/projetos/auttoma/auttoma.mp4",
         "typeMobile": "image",
         "urlMobile": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800"
     },
