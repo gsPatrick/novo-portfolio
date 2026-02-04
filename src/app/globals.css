@@ -46,6 +46,24 @@ body {
   overflow-x: hidden;
 }
 
+/* Cinematic Navigation Blur */
+#content-root {
+  transition: filter 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: filter, transform;
+}
+
+body.is-blurring #content-root {
+  filter: blur(20px) brightness(1.5);
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+/* Smooth Scroll Heuristic */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Accessibility: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   * {

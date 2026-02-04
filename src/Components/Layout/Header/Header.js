@@ -18,9 +18,31 @@ export default function Header() {
 
   const navItems = [
     { label: 'Projetos', href: '#work' },
-    { label: 'Sobre', href: '#about' },
     { label: 'Contato', href: '#contact' },
   ];
+
+  const handleScroll = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const elem = document.getElementById(targetId);
+
+    if (elem) {
+      // Trigger global blur event (will be handled by a global listener or simple CSS transition)
+      document.body.classList.add('is-blurring');
+
+      const targetPos = elem.getBoundingClientRect().top + window.pageYOffset;
+
+      window.scrollTo({
+        top: targetPos,
+        behavior: 'smooth'
+      });
+
+      // Remove blur after scroll (heuristic time)
+      setTimeout(() => {
+        document.body.classList.remove('is-blurring');
+      }, 800);
+    }
+  };
 
   const whatsappUrl = "https://wa.me/5571982862912?text=Olá Patrick, gostaria de conversar sobre um projeto!";
 
@@ -47,6 +69,7 @@ export default function Header() {
             <div key={item.label} className={styles.linkContainer}>
               <motion.a
                 href={item.href}
+                onClick={(e) => handleScroll(e, item.href)}
                 className={styles.link}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
