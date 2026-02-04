@@ -128,6 +128,9 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
                         </div>
                     </div>
 
+                    <h2 className={styles.title}>{project.title}</h2>
+                    <p className={styles.description}>{project.description}</p>
+
                     <div className={styles.tags}>
                         <span className={styles.categoryTag}>{project.category}</span>
                         {project.tags && project.tags.map((tag, i) => (
