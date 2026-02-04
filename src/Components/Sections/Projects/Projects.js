@@ -15,13 +15,12 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     const currentUrl = viewMode === 'mobile' && project.urlMobile ? project.urlMobile : project.url;
     const currentType = viewMode === 'mobile' && project.typeMobile ? project.typeMobile : project.type;
 
-    // Optimized offsets for 400vh runway
-    const mobileStartOffsets = [0.12, 0.42, 0.72];
-    const entranceRange = isMobile ? 0.15 : 0.1;
-
-    const start = isMobile ? mobileStartOffsets[index] : (0.25 + index * 0.25);
-    const end = start + 0.25;
-    const nextStart = isMobile ? (mobileStartOffsets[index + 1] || 1.1) : (start + 0.25);
+    // Dynamic increments based on number of projects
+    // We reserve the first "step" for the intro text
+    const step = 1 / (total + 1);
+    const start = isMobile ? (0.12 + index * 0.15) : (step + index * step);
+    const nextStart = isMobile ? (0.12 + (index + 1) * 0.15) : (start + step);
+    const entranceRange = isMobile ? 0.1 : step * 0.5;
 
     // Entrance: Linear y transform for Desktop only
     const y = useTransform(
@@ -35,7 +34,7 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     // Exit: Subtle scale for Desktop only
     const scaleTransform = useTransform(
         scrollYProgress,
-        [nextStart - 0.1, nextStart],
+        [nextStart - (step * 0.2), nextStart],
         [1, isLast ? 1 : 0.92]
     );
     const scale = isMobile ? 1 : scaleTransform;
@@ -43,7 +42,7 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     // Use opacity based depth for Desktop only
     const cardOpacityTransform = useTransform(
         scrollYProgress,
-        [nextStart - 0.1, nextStart],
+        [nextStart - (step * 0.2), nextStart],
         [1, isLast || !isMobile ? 1 : 0.5]
     );
     const cardOpacity = isMobile ? 1 : cardOpacityTransform;
@@ -51,7 +50,7 @@ const ProjectCard = ({ project, index, scrollYProgress, total }) => {
     // Desktop only filter
     const brightnessTransform = useTransform(
         scrollYProgress,
-        [nextStart - 0.1, nextStart],
+        [nextStart - (step * 0.2), nextStart],
         ["brightness(1)", isLast ? "brightness(1) " : "brightness(0.3)"]
     );
     const brightness = isMobile ? "none" : brightnessTransform;
@@ -159,7 +158,12 @@ export default function Projects() {
     ];
 
     return (
-        <section ref={containerRef} className={styles.projects} id="work">
+        <section
+            ref={containerRef}
+            className={styles.projects}
+            id="work"
+            style={{ height: `${(PROJECTS.length + 1) * 100}vh` }}
+        >
             <div className={styles.introSection}>
                 <div className={styles.introGlow} />
                 <motion.div
