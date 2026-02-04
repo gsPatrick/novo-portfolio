@@ -62,5 +62,18 @@
         "urlMobile": "/projetos/superodds/superodds-mobile.mp4",
         "objectFit": "cover",
         "objectPosition": "center center"
+    },
+    {
+        "id": 6,
+        "title": "G5 Futebol",
+        "category": "Sports Management",
+        "description": "Metodologia de elite e gestão profissional para formação de atletas, criada por quem vive a essência do futebol.",
+        "color": "#050505",
+        "type": "video",
+        "url": "/projetos/g5/g5.mp4",
+        "typeMobile": "video",
+        "urlMobile": "/projetos/g5/g5-mobile.mp4",
+        "objectFit": "cover",
+        "objectPosition": "center center"
     }
 ]
